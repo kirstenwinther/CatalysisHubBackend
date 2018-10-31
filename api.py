@@ -180,7 +180,8 @@ class CustomSQLAlchemyObjectType(graphene_sqlalchemy.SQLAlchemyObjectType):
     def __init_subclass_with_meta__(cls, model=None, registry=None,
                                     skip_registry=False, only_fields=(),
                                     exclude_fields=(), connection=None,
-                                    use_connection=None, interfaces=(),
+                                    use_connection=None,
+                                    #interfaces=(graphene.relay.Node, ),
                                     id=None, **options):
         # Force it to use the countable connection
         countable_conn = connection or CountableConnection.create_type(
@@ -195,7 +196,7 @@ class CustomSQLAlchemyObjectType(graphene_sqlalchemy.SQLAlchemyObjectType):
             exclude_fields,
             countable_conn,
             use_connection,
-            interfaces,
+            #interfaces,
             id,
             **options)
 
